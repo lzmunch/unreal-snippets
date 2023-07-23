@@ -29,7 +29,7 @@ import os
 # creating an instance here for convenience
 ASSET_TOOLS = unreal.AssetToolsHelpers.get_asset_tools()
 
-def buildStaticMeshImportTask(srcPath, dstDir):
+def buildStaticMeshImportTask(srcPath, dstDir, automated, replaceExisting):
     """
     Build import task for FBX file
 
@@ -55,10 +55,10 @@ def buildStaticMeshImportTask(srcPath, dstDir):
     importTask = unreal.AssetImportTask()
     importTask.set_editor_properties({
         'destination_path': dstDir,
-        'automated': True,
+        'automated': automated,
         'options': importOptions,
         'filename': srcPath,
-        'replace_existing': False
+        'replace_existing': replaceExisting
     })
 
     return importTask
